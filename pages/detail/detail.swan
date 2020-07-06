@@ -1,0 +1,14 @@
+<!-- <my-bac navbar-data='{{nvabarData}}'></my-bac> -->
+<view class="container" bindtap="navigateBack" >
+    <!--to do-->
+    <view>
+        <text class="title">{{tit}}</text>
+    </view>
+    <view class="ms">
+        <text class="producer">{{producer}}</text>
+        <text class="dateorder">{{dateorder}}</text>
+    </view>
+    <view class="digest">{{digest}}</view>
+    <rich-text nodes="{{article}}"></rich-text>
+    <!-- <web-view src="//m.zhiding.cn/article/3119646.htm"></web-view> -->
+</view>

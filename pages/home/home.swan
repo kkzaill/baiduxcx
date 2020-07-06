@@ -1,0 +1,67 @@
+<view class="container" >
+    <view class="tc" s-if="{{tc}}">
+        <image class="load" src="http://icon.zhiding.cn/zhiding/homePage/mobimg/load.png"></image>
+        <image class="zd" src="http://icon.zhiding.cn/zhiding/homePage/mobimg/ari2.png"></image>
+        <text class="js">记录和推动数字化创新</text>
+     </view>
+    <scroll-view
+        scroll-x
+        class="scroll-view"
+        scroll-into-view="{{id}}"
+        bind:scroll="myscroll"
+        scroll-with-animation="true"
+        scroll-left = '{{sl}}'  
+        s-if = '{{sv}}'
+    >
+    <view class="box">
+        <view id = "{{item.id}}"  class="row-view {{index==idx?'_left':'left'}}" bind:tap='goIndex' bind:touchend="touchEnd" bind:touchmove="touchMove" bind:touchstart="touchStart" animation="{{ani}}" data-index="{{index}}" s-for= "{{navName}}" s-key="{{index}}">
+            {{item.name}}
+            <view class="line" s-if="index==idx"></view>
+        </view>
+    </view> 
+    </scroll-view>
+    <!-- 轮播 -->
+    <view class="wrap" s-if="ban">
+        <view class="swiper-wrap">
+            <swiper
+                indicator-color="#fff"
+                indicator-active-color="#037581"
+                autoplay="{{true}}"
+                indicator-dots="{{true}}"
+                vertical="false"
+                circular="true"
+                current="0"
+                >
+                <block s-for="item in items">
+                    <swiper-item>
+                        <navigator url='../detail/detail?id={{item.document_id}}'><view class="item"><image class="banImg" src="{{item.imgurl}}"></image></view></navigator>
+                        <view class="banTitle">{{item.title}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+    <scroll-view  scroll-y="false" class="list" >
+        <navigator s-if="sorh" url='../detail/detail?id={{item.document_id}}' data-id="{{item.document_id}}" class="audiBox" s-for="{{list}}" s-key="{{index}}">
+            <view class="alImgBox">
+                <image lazy-load="true" mode="scaleToFill" class="alImg" src="{{item.imgurl}}"></image>
+            </view>
+            <view class="alTeBox">
+                <text class="alTe">{{item.title}}</text>
+                <view class="bottom">
+                     <text class="name">{{item.Author}}</text>
+                     <text class="time">{{item.date}}</text>
+                     <view class="clear"></view>   
+                </view>
+            </view>
+            <view class="clear"></view>   
+        </navigator>
+    </scroll-view >
+
+    <view class="bot" s-if="{{load}}">
+        <image class="botload" src="http://icon.zhiding.cn/zhiding/homePage/mobimg/load.png"></image>
+        <image class="botzd" src="http://icon.zhiding.cn/zhiding/homePage/mobimg/ari2.png"></image>
+        <text class="botjs">记录和推动数字化创新</text>
+    </view>
+    
+</view>
